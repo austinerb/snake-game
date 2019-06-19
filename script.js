@@ -210,7 +210,7 @@ class Game {
     endGame() {
         clearInterval(this.interval);
 
-        console.log("you lose");
+        gameOverScreen.classList.remove("hide");
     }
 
     addKeyListeners() {
@@ -241,11 +241,18 @@ function newGame() {
 //
 
 const newGameButton = document.querySelector("#new-game");
+const restartGameButton = document.querySelector("#restart-game");
+
 const homeScreen = document.querySelector("#home-screen");
 const gameScreen = document.querySelector("#game-screen");
+const gameOverScreen = document.querySelector("#game-over-screen");
 
-newGameButton.addEventListener("click", function() {
+function init() {
     homeScreen.classList.add("hide");
     gameScreen.classList.remove("hide");
+    gameOverScreen.classList.add("hide");
     newGame(); 
-});
+}
+
+newGameButton.addEventListener("click", init);
+restartGameButton.addEventListener("click", init);
